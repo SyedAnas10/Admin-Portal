@@ -1,0 +1,38 @@
+<h1>Admin Portal</h1>
+<h1>COVID-19 Tracker</h1>
+
+<div style="width: 100%; height: 100%; align-content: center; text-align: center;">
+  
+<!-- To display the selected user's details -->
+  <div *ngIf = selectedUser>
+    <h2> {{selectedUser.username | uppercase}} </h2>
+    <p> id : {{selectedUser.id}} </p>
+    <select [(ngModel)] = "selectedUser.status">
+      <option value="negative">negative</option>
+      <option value="positive">positive</option>
+    </select>
+    <button style="margin-left: 3px;">update</button>
+  </div>
+
+  <input type="text" id="myInput" (keyup)="myFunction($event)" 
+  placeholder="Search for names.." title="Type in a name">
+
+<!-- To display the list of all users registered on the app in tabular form -->
+  <table style="width:100%; border: 1px solid black;"
+  id="myTable">
+    <tr>
+      <th>User Name</th>
+      <th>ID</th>
+      <th>Current Status</th> 
+    </tr>
+    <tr *ngFor = "let user of users" (click)="selectUser(user)">
+      <td>{{user.username}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.status}}</td>
+    </tr>
+</table>
+
+
+
+
+</div>
